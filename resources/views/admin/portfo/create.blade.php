@@ -56,16 +56,13 @@
         </div>
         <div class="mb-3">
             <div> Technologies</div>
-
-                
-                
               
-                    @foreach ($technology as $technologies)
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="technology" value="{{ $technologies->id}}" name="technologies[]">
-                            <label class="form-check-label" for="technology">{{$technologies->name}}</label>
-                        </div>
-                    @endforeach  
+                @foreach ($technology as $technologies)
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="technology" value="{{ $technologies->id}}" name="technologies[]">
+                        <label class="form-check-label" for="technology">{{$technologies->name}}</label>
+                    </div>
+                @endforeach  
       
         </div>
         <div class="col-12">

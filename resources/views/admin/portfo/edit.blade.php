@@ -38,6 +38,17 @@
             <label for="description" class="form-label">Description</label>
             <textarea type="text" class="form-control" id="description" placeholder="" name="description"></textarea>
         </div>
+        <div class="mb-3">
+            <div> Technologies</div>
+              
+                @foreach ($technology as $technologies)
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="technology" value="{{ $technologies->id}}" name="technologies[]">
+                        <label class="form-check-label" for="technology">{{$technologies->name}}</label>
+                    </div>
+                @endforeach  
+      
+        </div>
         <div class="mb-3 @if(!$portf->image) d-none @endif" id="image-input-container">
             <div class="preview">
                 <img id="file-image-preview" @if($portf->image) src="{{asset('storage/' . $portf->image)}} @endif">

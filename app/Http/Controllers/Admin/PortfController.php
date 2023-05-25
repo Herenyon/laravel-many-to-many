@@ -84,8 +84,10 @@ class PortfController extends Controller
      */
     public function edit(Portf $portf)
     {
+        $types = Type::all();
+        $technology = Technology::all();
 
-        return view('admin.portfo.edit', compact('portf'));
+        return view('admin.portfo.edit', compact('portf', 'types', 'technology'));
     }
 
     /**
@@ -115,6 +117,9 @@ class PortfController extends Controller
 
                 $portf->image = Storage::put('uploads', $data['image']);
             }
+        }
+        if (isset($data['technologies'])) {
+            $portf->technologies()->sync($data['technologies']);
         }
         $portf->update($data);
         return redirect()->route('admin.dashboard', $portf);

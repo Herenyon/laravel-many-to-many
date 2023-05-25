@@ -9,8 +9,8 @@
    @if ($portfo->type_id) 
        <h3>{{ $portfo->type->name }}</h3>
    @endif
-   @if ($portfo->technology_id) 
+    
        <h3>{{ $portfo->technology->name }}</h3>
-   @endif
+
 </div>
 @endsection
