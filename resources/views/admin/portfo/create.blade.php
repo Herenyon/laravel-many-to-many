@@ -45,14 +45,28 @@
             <input class="form-control" type="file" id="image" name="image">
         </div>
         <div>
-        <label for="type_id" class="form-label">Language</label>
+        <label for="type_id" class="form-label">Type</label>
         <select class="form-select" aria-label="Default select example" name="type_id" id="type_id">
-            <option selected value="">Select Language</option>
+            <option selected value="">Select Type</option>
             @foreach ($types as $type)
                 <option value="{{$type->id}}">{{$type->name}}</option>
                
             @endforeach
         </select>
+        </div>
+        <div class="mb-3">
+            <div> Technologies</div>
+
+                
+                
+              
+                    @foreach ($technology as $technologies)
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="technology" value="{{ $technologies->id}}" name="technologies[]">
+                            <label class="form-check-label" for="technology">{{$technologies->name}}</label>
+                        </div>
+                    @endforeach  
+      
         </div>
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Create</button>

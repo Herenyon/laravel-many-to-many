@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Portf;
 use App\Http\Requests\StorePortfRequest;
 use App\Http\Requests\UpdatePortfRequest;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -31,7 +32,8 @@ class PortfController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.portfo.create', compact('types'));
+        $technology = Technology::all();
+        return view('admin.portfo.create', compact('types', 'technology'));
     }
 
     /**
@@ -50,8 +52,14 @@ class PortfController extends Controller
         }
 
 
+
+
         $portf->slug = Str::slug($data['repo_title'], '-');
         $portf->save();
+
+        if (isset($data['technologies'])) {
+            $portf->technologies()->sync($data['technologies']);
+        }
 
         return redirect()->route('admin.dashboard');
     }
